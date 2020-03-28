@@ -1,10 +1,18 @@
 <?php 
-    static function register(){
 
-        spl_autoload_register(array(__CLASS__, 'autoload'));
-    }
+    spl_autoload_register('autoload');
 
-    static function autoload($class_name){
-        require 'class/' . $class_name . '.php';
+    function autoload($className){
+        // $path = "Core/";
+        $extension = ".php";
+        $fullPath =  $className .  $extension;
+        // echo $fullPath;
+
+        if(!file_exists($fullPath)){
+            return false;
+        }
+
+        include_once $fullPath;
+
     }
 ?>
