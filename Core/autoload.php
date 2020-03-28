@@ -3,16 +3,10 @@
     spl_autoload_register('autoload');
 
     function autoload($className){
-        // $path = "Core/";
-        $extension = ".php";
-        $fullPath =  $className .  $extension;
-        // echo $fullPath;
+        // $realPath = realpath($className. '.php');
+        require $className . '.php';
+        // if(!strpos($realPath, 'Core')){
+        // }
+    }   
 
-        if(!file_exists($fullPath)){
-            return false;
-        }
-
-        include_once $fullPath;
-
-    }
 ?>
