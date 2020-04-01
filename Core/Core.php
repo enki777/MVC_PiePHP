@@ -11,13 +11,17 @@
         public function run()
         {
             echo "------------------------------<br>";
-            echo "        " . $_SERVER["REQUEST_URI"] . "<br><br>";
-            // echo __CLASS__ . " [OK]" . PHP_EOL;
+            echo "        " . $_SERVER["REQUEST_URI"] . "<br>";
 
             $arr = explode("/", $_SERVER["REQUEST_URI"]);
 
             print_r($arr);
-            // $controller;
-            // $methode;
+            $class = "Controller\\" . ucfirst($arr[3]) . "Controller";
+            $methode = $arr[4] . "Action";
+
+            echo "$class -> $methode<br><br>";
+            $controller = new $class();
+            $controller->$methode();
+
         }
     }
