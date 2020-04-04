@@ -16,9 +16,19 @@
             $arr = explode("/", $_SERVER["REQUEST_URI"]);
 
             print_r($arr);
-            if(($route = Router::get($_SERVER["REDIRECT_URL"])) != null ){
+
+            //  ------------ ROUTER STATIQUE ------------
+            if(($route = Router::get("/" . $arr[3])) != null ){
                 echo "Custom route found<br>";
+
+                $class = ucfirst($route["controller"]) . "Controller";
+                $methode = $route["action"] . "Action";
+
+                $controller = new $class;
+                $controller->$methode();
+    
             }
+            //  ------------ ROUTER DYNAMIQUE ------------
             else{
                 if(!isset($arr[3]) ||!isset($arr[4])){
                     $arr[3] = "app";
