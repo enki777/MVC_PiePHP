@@ -15,5 +15,5 @@ class UserController extends Core\Controller{
 
     public function addAction(){
         echo "Ceci est la methode add<br>";
-    }
+    }   
 }

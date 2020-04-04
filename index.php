@@ -9,19 +9,21 @@
 <body>
     <pre>
         <?php 
-
+            // phpinfo();
+            // phpinfo(INFO_MODULES);
+            // exit();
             define ('BASE_URI', str_replace ('\\', '/', substr ( __DIR__ , strlen($_SERVER['DOCUMENT_ROOT']) ) ) ) ;
             require_once ( implode ( DIRECTORY_SEPARATOR , ['Core','autoload.php']) ) ;
 
             $app = new Core\Core() ;
             $app -> run();
 
-            echo "Contenu de POST : ";
-            print_r($_POST);
-            echo "Contenu de GET : ";
-            print_r($_GET);
-            echo "Contenu de SERVER : ";
-            print_r($_SERVER);
+            // echo "Contenu de POST : ";
+            // print_r($_POST);
+            // echo "Contenu de GET : ";
+            // print_r($_GET);
+            // echo "Contenu de SERVER : ";
+            // print_r($_SERVER);
         ?>
     </pre>
 </body>

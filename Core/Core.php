@@ -47,7 +47,7 @@
                     $controller = new $class();
                     $controller->$methode();    
                 }else{
-                    echo '<h1 style ="color :red;">Erreur 404 !</h1>';
+                    echo '<h1 style ="color :red;">Erreur  404 !</h1>';
                     echo '<h2 style ="color :red;">Veuillez spécifier un Controller <U>valide</U> ainsi que sa méthode(action) !</h2>';
                     echo '<h3 style ="color :red;">Exemple : <span style ="color :green;">user/index</span></h3>';
                 }
