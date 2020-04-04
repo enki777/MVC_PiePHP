@@ -16,6 +16,7 @@ class Router
     }
 
     public static function getRoutes(){
-
+        self::$routes[$url] = $route;
+        echo $route;
     }
 } 

@@ -1,12 +1,12 @@
 <?php 
     namespace Core;
-    // use Router;
+    use Core\Router;
 
     class Core
     {
-        // public function __construct(){
-        //     require_once("src/routes.php");
-        // }
+        public function __construct(){
+            require_once("src/routes.php");
+        }
 
         public function run()
         {
@@ -16,14 +16,12 @@
             $arr = explode("/", $_SERVER["REQUEST_URI"]);
 
             print_r($arr);
-            
-            // if(($route = Router::get($arr)) != null ){
-            //     echo "Custom route found<br>";
-            //     $controller = $route->connect($arr, );
 
-            // }else
+            if(($route = Router::get($_SERVER["REQUEST_URI"])) != null ){
+                echo "Custom route found<br>";
+                $controller = $route->getRoutes();
 
-            if(!isset($arr[3]) || !isset($arr[4])){
+            }else if(!isset($arr[3]) || !isset($arr[4])){
                 $arr[3] = "app";
                 $arr[4] = "index"; 
                 

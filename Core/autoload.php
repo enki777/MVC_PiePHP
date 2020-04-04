@@ -8,7 +8,6 @@
             implode(DIRECTORY_SEPARATOR, ['.', '']),
             implode(DIRECTORY_SEPARATOR, ['.', 'src', '']),
             implode(DIRECTORY_SEPARATOR, ['..', 'src', '']),
-            // implode(DIRECTORY_SEPARATOR, ['..', 'src', '']),
         ];
 
         for ($i = 0; $i < count($array); $i++) {
