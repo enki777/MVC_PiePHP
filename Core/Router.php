@@ -14,9 +14,4 @@ class Router
     {
         return array_key_exists($url, self::$routes) ? self::$routes[$url] : null;
     }
-
-    public static function getRoutes(){
-        self::$routes[$url] = $route;
-        echo $route;
-    }
 } 

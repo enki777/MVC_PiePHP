@@ -1,7 +1,6 @@
-<?php 
-namespace Controller; 
+<?php  
 
-class UserController{
+class UserController extends Core\Controller{
 
     // /user/index
     public function indexAction(){
