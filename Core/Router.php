@@ -1,9 +1,9 @@
 <?php
+    
 namespace Core;
 
 class Router
 {
-
     private static $routes;
     public static function connect($url, $route)
     {
@@ -14,4 +14,8 @@ class Router
     {
         return array_key_exists($url, self::$routes) ? self::$routes[$url] : null;
     }
-}
+
+    public static function getRoutes(){
+
+    }
+} 
