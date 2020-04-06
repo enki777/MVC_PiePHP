@@ -1,7 +1,7 @@
 <?php 
 
 class Database{
-    private $server = "localhost";
+    private $server = "127.0.0.1";
     private $user = "root";
     private $pwd = "";
     private $dbName = "piephp";
@@ -15,6 +15,3 @@ class Database{
         return $pdo;
     }
 }
-// print_r(PDO::getAvailableDrivers());
-// phpinfo();
-// phpinfo(INFO_MODULES);
