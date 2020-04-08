@@ -14,6 +14,11 @@ class UserController extends Core\Controller{
     }
 
     public function addAction(){
-        echo "Ceci est la methode add<br>";
+       $this->render("register");
     }   
+
+    public function registerAction(){
+        $Model = new userModel();
+        $Model->save();
+    }
 }
