@@ -19,5 +19,4 @@ class Controller{
         }
         return self::$_render;
     }
-        
 }

@@ -31,4 +31,14 @@ class UserModel{
         $stmt = $connect->prepare($sql);
         $stmt->execute([$email, $pwd]);
     }
+
+    public function checkUser($email){
+        $sql = "SELECT * from users where email = ?";
+        return $this->executeThis($sql, $email);
+    }
+
+    public function checkLogin($email, $pwd){
+        $sql = "SELECT * from users where email = ? and password = ?";
+        return $this->executeThis($sql, [$email, $pwd]);
+    }
 }
