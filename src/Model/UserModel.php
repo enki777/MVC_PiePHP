@@ -1,13 +1,12 @@
 <?php 
 
-// namespace Model;
-require_once "../../Core/Database.php";
+namespace Model;
 
-
-class UserModel extends Database{
+class UserModel{
     
     private function executeThis($sql, $array_values=null) {
-        $stmt = $this->connect()->prepare($sql);
+        $connect = \Core\Database::connect();
+        $stmt = $connect->prepare($sql);
         if ( !$array_values ) {
             $stmt->execute();
         } else if ( is_string($array_values) || is_int($array_values) ) {
@@ -27,8 +26,9 @@ class UserModel extends Database{
     private $pwd;
 
     public function save($email,$pwd){
+        $connect = \Core\Database::connect();
         $sql = "INSERT into users(email, password) values(?,?)";
-        $stmt = $this->connect()->prepare($sql);
+        $stmt = $connect->prepare($sql);
         $stmt->execute([$email, $pwd]);
     }
 }

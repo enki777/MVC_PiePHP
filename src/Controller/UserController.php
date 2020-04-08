@@ -4,9 +4,7 @@ class UserController extends Core\Controller{
 
     // /user/index
     public function indexAction(){
-        /* display all user */ 
-
-        echo "UserConctroller/indexAction<br><br>";
+        echo self::render("index");
     }
 
     public function filterAction(){
@@ -14,11 +12,12 @@ class UserController extends Core\Controller{
     }
 
     public function addAction(){
-       $this->render("register");
+        echo "userController / addAction";
+        echo  $this->render('register');
     }   
 
     public function registerAction(){
-        $Model = new userModel();
-        $Model->save();
+        $Model = new \Model\userModel();
+        $Model->save($_POST["email"],$_POST["password"]);
     }
 }
