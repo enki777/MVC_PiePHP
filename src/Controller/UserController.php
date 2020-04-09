@@ -20,27 +20,26 @@ class UserController extends \Core\Controller{
 
     public function registerAction(){
         $model = new \Model\UserModel();
-        if(isset($_POST["email"]) && isset($_POST["password"])){
-            if($model->checkUser($_POST["email"]) == true){
-                echo "Cet utilisateur existe deja";
-            }else{
-                $Model->save($_POST["email"],$_POST["password"]);
-                echo "utilisateur " . $_POST["email"] . " enregistré avec succès.";
-            }    
-        }
+        if($model->checkUser($this->pValue[0]) == true){
+            echo "Cet utilisateur existe deja";
+        }else{
+            $model->save($this->pValue);
+            echo "utilisateur " . $this->pValue[0] . " enregistré avec succès.";
+        }    
+    }
+
+    public function displayloginAction(){
+        echo  $this->render('login');
     }
 
     public function loginAction(){
-        echo  $this->render('login');
+        // var_dump($this->pValue);
         $model = new \Model\UserModel();
-        // var_dump($_POST);
-        if(isset($_POST["email"]) && isset($_POST["password"])){
-            if($model->checkLogin($_POST["email"], $_POST["password"]) == true){
-                echo "Vous etes bien connecté";
-            }else{
-                echo "Mauvais identifiant ou mot de passe";
-            }    
-        }
+        if($model->checkLogin($this->pValue[0],$this->pValue[1]) == true){
+            echo "Vous etes bien connecté";
+        }else{
+            echo "Mauvais identifiant ou mot de passe";
+        }    
     }
 
     public function __destruct()

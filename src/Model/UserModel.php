@@ -4,8 +4,14 @@ namespace Model;
 
 class UserModel{
     
+    private $email;
+    private $pwd;
+
     private function executeThis($sql, $array_values=null) {
-        $connect = \Core\Database::connect();
+        // $connect = new \Core\Database();
+        // $connect->getPDO();
+        // $connect = new \Core\Database();
+        $connect = \Core\Database::getPDO();
         $stmt = $connect->prepare($sql);
         if ( !$array_values ) {
             $stmt->execute();
@@ -22,14 +28,11 @@ class UserModel{
         }
     }
 
-    private $email;
-    private $pwd;
-
-    public function save($email,$pwd){
-        $connect = \Core\Database::connect();
+    public function save($test){
+        $connect = \Core\Database::getPDO();
         $sql = "INSERT into users(email, password) values(?,?)";
         $stmt = $connect->prepare($sql);
-        $stmt->execute([$email, $pwd]);
+        $stmt->execute($test);
     }
 
     public function checkUser($email){

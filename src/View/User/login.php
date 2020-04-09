@@ -3,8 +3,8 @@
     <label for="email">Email : </label>
     <input type="email" name="email">
     
-    <label for="pwd">password :</label>
-    <input type="password" name="pwd">
+    <label for="password">password :</label>
+    <input type="password" name="password">
 
     <input type="submit" value="Se connecter">
 </form>

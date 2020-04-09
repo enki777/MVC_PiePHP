@@ -2,8 +2,8 @@
     namespace Core;
     use Core\Router;
 
-    class Core
-    {
+    class Core{
+        
         public function __construct(){
             require_once("src/routes.php");
         }
