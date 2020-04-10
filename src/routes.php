@@ -6,4 +6,6 @@ Core\Router::connect('/wesh', ['controller' => 'user', 'action' => 'filter']);
 Core\Router::connect('/login', ['controller' => 'user', 'action' => 'displaylogin']);
 Core\Router::connect('/user/login', ['controller' => 'user', 'action' => 'login']);
 
+Core\Router::connect('/test', ['controller' => 'user', 'action' => 'test']);
+
 
