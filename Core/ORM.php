@@ -44,10 +44,16 @@ class ORM{
         return $results->id;
     }
 
-    public function checkUser($email){
+    public function userExists($email){
+        $connect = Database::getPDO();
         $sql = 'SELECT * from users where email = "'. $email .'"  ';
         // var_dump($sql);
         return $this->executeThis($sql, $email);
+        // $stmt = $connect->prepare($sql);
+        // $stmt->execute();
+        // $results = $stmt->fetch(\PDO::FETCH_OBJ);
+        // var_dump($results->count == 0 ? false : true);
+        // return $results->count == 0 ? false : true;
     }
 
     public function checkLogin($email, $pwd){

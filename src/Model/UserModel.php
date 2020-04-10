@@ -15,8 +15,13 @@ class UserModel{
         ));
     }
 
-    public function checkUser($email){
+    public function userExists($email){
         $orm = new \Core\ORM();
-        $orm->checkUser($email);
+       return  $orm->userExists($email);
+    }
+
+    public function checkLogin($email, $pwd){
+        $orm = new \Core\ORM();
+        return  $orm->checkLogin($email, $pwd);
     }
 }

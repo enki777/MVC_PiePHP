@@ -20,7 +20,10 @@ class UserController extends \Core\Controller{
 
     public function registerAction(){
         $model = new \Model\UserModel();
-        if($model->checkUser($this->pValue[0]) == true){
+        // $test = $model->checkUser($this->pValue[0]);
+        // var_dump($test);
+        // if($test){
+        if($model->userExists($this->pValue[0])){
             echo "Cet utilisateur existe deja";
         }else{
             $model->save($this->pValue);
@@ -33,9 +36,8 @@ class UserController extends \Core\Controller{
     }
 
     public function loginAction(){
-        // var_dump($this->pValue);
         $model = new \Model\UserModel();
-        if($model->checkLogin($this->pValue[0],$this->pValue[1]) == true){
+        if($model->checkLogin($this->pValue[0],$this->pValue[1])){
             echo "Vous etes bien connecté";
         }else{
             echo "Mauvais identifiant ou mot de passe";
