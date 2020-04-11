@@ -24,4 +24,19 @@ class UserModel{
         $orm = new \Core\ORM();
         return  $orm->checkLogin($email, $pwd);
     }
+
+    public function read($table, $id){
+        $orm = new \Core\ORM();
+        return  $orm->read($table, $id);
+    }
+
+    public function update($table,$id ,$fields){
+        $orm = new \Core\ORM();
+        return $orm->update($table,$id ,$fields);
+    }
+
+    public function delete($table , $id){
+        $orm = new \Core\ORM();
+        return $orm->delete($table,$id);
+    }
 }

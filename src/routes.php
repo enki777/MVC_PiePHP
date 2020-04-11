@@ -8,4 +8,9 @@ Core\Router::connect('/user/login', ['controller' => 'user', 'action' => 'login'
 
 Core\Router::connect('/test', ['controller' => 'user', 'action' => 'test']);
 
+Core\Router::connect('/read', ['controller' => 'user', 'action' => 'read']);
+
+Core\Router::connect('/update', ['controller' => 'user', 'action' => 'update']);
+
+Core\Router::connect('/delete', ['controller' => 'user', 'action' => 'delete']);
 

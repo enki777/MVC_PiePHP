@@ -44,6 +44,25 @@ class UserController extends \Core\Controller{
         }    
     }
 
+    public function readAction(){
+        $model = new \Model\UserModel();
+        $model->read('users', 1);
+    }
+
+    public function updateAction(){
+        $model = new \Model\UserModel();
+        $model->update("articles", 1, array(
+            'titre' => "bilal t es trop chaud woullah" ,
+            'content' => "qwertyuiopasdfghjkl;zxcvbn" ,
+            'author' => 'BILALSAH'
+        ));
+    }
+
+    public function deleteAction(){
+        $model = new \Model\UserModel();
+        $model->delete("users",2);
+    }
+
     public function __destruct()
     {
         if (isset($this->fichier)) {

@@ -60,4 +60,50 @@ class ORM{
         $sql = "SELECT * from users where email = ? and password = ?";
         return $this->executeThis($sql, [$email, $pwd]);
     }
+
+    public function read($table,$id){
+        $connect = Database::getPDO();
+        $sql = "SELECT * from $table where id = $id";
+        // var_dump($this->executeThis($sql, [$table,$id]));
+        $stmt = $connect->prepare($sql);
+        $stmt->execute();
+        $results = $stmt->fetch(\PDO::FETCH_ASSOC);
+        return $results;
+    }
+
+    public function update($table,$id ,$fields){
+        $connect = Database::getPDO();
+        $sql = "DESC $table";
+        $stmt = $connect->prepare($sql);
+        $stmt->execute();
+        $results = $stmt->fetch();
+        // echo $results["Field"];
+        $tab = [];
+        foreach($fields as $key => $value){
+            array_push($tab, "$key = '$value'");
+        }
+        $sql = 'UPDATE '.$table.' SET '.implode(", ",$tab).' where '.$results["Field"].' = '.$id.'  ';
+        // echo $sql;
+        $stmt = $connect->prepare($sql);
+        $stmt->execute();
+    }
+
+    public function delete($table,$id){
+        $connect = Database::getPDO();
+        $sql = "DESC $table";
+        $stmt = $connect->prepare($sql);
+        $stmt->execute();
+        $results = $stmt->fetch();
+
+        $sql = 'DELETE from '.$table.' where '.$results["Field"].' = '.$id.'';
+        echo $sql;
+        $stmt = $connect->prepare($sql);
+        $stmt->execute();
+    }
+
+    // public function find ( $table , $params = array (
+    //     'WHERE ' = > '1',
+    //     'ORDER BY ' = > 'id ASC ',
+    //     'LIMIT ' = > ''
+    //     ) ) {}
 }
