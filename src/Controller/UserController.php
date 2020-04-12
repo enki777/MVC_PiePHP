@@ -46,8 +46,7 @@ class UserController extends \Core\Controller{
 
     public function readAction(){
         $model = new \Model\UserModel();
-        $test = $model->read($this->pValue[0], $this->pValue[1]);
-        print_r($test);
+        $model->read($this->pValue[0], $this->pValue[1]);
     }
 
     public function displayupdateAction(){
@@ -56,11 +55,15 @@ class UserController extends \Core\Controller{
 
     public function updateAction(){
         $model = new \Model\UserModel();
-        $test = $model->update("articles", 1, array(
-            'titre' => "bilal t es trop chaud woullah" ,
-            'content' => "qwertyuiopasdfghjkl;zxcvbn" ,
-            'author' => 'BILALSAH'
-        ));
+        if($model->read('articles',1)){
+            $test = $model->update("articles", 1, array(
+                'titre' => "bilal t es trop chaud woullah" ,
+                'content' => "qwertyuiopasdfghjkl;zxcvbn" ,
+                'author' => 'BILALSAH'
+            ));
+        }else{
+            echo "il n y as pas d entree a cet ID";
+        }
     }
 
     public function displaydeleteAction(){
@@ -69,7 +72,11 @@ class UserController extends \Core\Controller{
 
     public function deleteAction(){
         $model = new \Model\UserModel();
-        $model->delete($this->pValue[0], $this->pValue[1]);
+        if($model->read($this->pValue[0], $this->pValue[1])){
+            $model->delete($this->pValue[0], $this->pValue[1]);
+        }else{
+            echo "il n y as pas d entree a cet ID";
+        }
     }
 
     public function displayfindAction(){

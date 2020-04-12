@@ -1,5 +1,0 @@
-<form action="<?php echo BASE_URI; ?>/user/find" name="update" method="post">
-    <input type="text" name="table" placeholder="Precisez la table">
-    <input type="text" name="where" placeholder="Precisez l ID">
-    <button type="submit">DELETE</button>
-</form>
