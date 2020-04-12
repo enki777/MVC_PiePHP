@@ -30,11 +30,11 @@
             }
             //  ------------ ROUTER DYNAMIQUE ------------
             else{
-                if(!isset($arr[3]) ||!isset($arr[4])){
-                    $arr[3] = "app";
+                if(!isset($arr[3]) || !isset($arr[4])){
+                    $arr[3] = "user";
                     $arr[4] = "index"; 
                     
-                    $class = ucfirst($arr[3]) . "Controller";
+                    $class = "Controller\\" .ucfirst($arr[3]) . "Controller";
                     $methode = $arr[4] . "Action";
     
                     $controller = new $class();
