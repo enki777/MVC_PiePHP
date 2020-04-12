@@ -2,7 +2,7 @@
 
 namespace Model;
 
-class UserModel{
+class UserModel extends \Core\Entity{
     
     private $email;
     private $pwd;
