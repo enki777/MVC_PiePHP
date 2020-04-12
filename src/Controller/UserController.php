@@ -1,7 +1,6 @@
 <?php  
 
-// namespace Controller;
-// use Core\Controller;
+namespace Controller;
 
 class UserController extends \Core\Controller{
 

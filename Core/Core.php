@@ -21,7 +21,7 @@
             if(($route = Router::get("/" . $arr[3])) != null ){
                 echo "Custom route found<br>";
 
-                $class = ucfirst($route["controller"]) . "Controller";
+                $class = "Controller\\" . ucfirst($route["controller"]) . "Controller";
                 $methode = $route["action"] . "Action";
 
                 $controller = new $class;
@@ -40,8 +40,8 @@
                     $controller = new $class();
                     $controller->$methode();  
                 }
-                else if(class_exists(ucfirst($arr[3]) . "Controller") && method_exists( ucfirst($arr[3]) . "Controller",$arr[4] . "Action")){
-                    $class =  ucfirst($arr[3]) . "Controller";
+                else if("Controller\\" . class_exists(ucfirst($arr[3]) . "Controller") && method_exists( "Controller\\" . ucfirst($arr[3]) . "Controller",$arr[4] . "Action")){
+                    $class = "Controller\\" . ucfirst($arr[3]) . "Controller";
                     $methode = $arr[4] . "Action";
 
                     $controller = new $class();
