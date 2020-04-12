@@ -47,21 +47,34 @@ class UserController extends \Core\Controller{
 
     public function readAction(){
         $model = new \Model\UserModel();
-        $model->read('users', 1);
+        $test = $model->read($this->pValue[0], $this->pValue[1]);
+        print_r($test);
+    }
+
+    public function displayupdateAction(){
+        echo  $this->render('update');
     }
 
     public function updateAction(){
         $model = new \Model\UserModel();
-        $model->update("articles", 1, array(
+        $test = $model->update("articles", 1, array(
             'titre' => "bilal t es trop chaud woullah" ,
             'content' => "qwertyuiopasdfghjkl;zxcvbn" ,
             'author' => 'BILALSAH'
         ));
     }
 
+    public function displaydeleteAction(){
+        echo  $this->render('delete');
+    }
+
     public function deleteAction(){
         $model = new \Model\UserModel();
-        $model->delete("users",2);
+        $model->delete($this->pValue[0], $this->pValue[1]);
+    }
+
+    public function displayfindAction(){
+        echo  $this->render('find');
     }
 
     public function findAction(){

@@ -27,7 +27,7 @@ class UserModel{
 
     public function read($table, $id){
         $orm = new \Core\ORM();
-        return  $orm->read($table, $id);
+        return $orm->read($table, $id);
     }
 
     public function update($table,$id ,$fields){

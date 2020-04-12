@@ -3,7 +3,7 @@
     <input type="text" name="table">
     
     <label for="password">Id :</label>
-    <input type="password" name="id">
+    <input type="text" name="id">
 
     <input type="submit" value="Chercher">
 </form>

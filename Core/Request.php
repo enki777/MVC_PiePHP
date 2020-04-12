@@ -5,19 +5,23 @@ namespace Core;
 class Request{
     static $postvalue;
     static $getvalue;
-    public function securePost($postEmail, $postPwd){
-      
-        $email = substr(json_encode(htmlspecialchars(strip_tags(trim($_POST["email"])))), 1, -1);
-        $pwd = substr(json_encode(htmlspecialchars(strip_tags(trim($_POST["password"])))), 1, -1);
-        $postvalue = [$email,$pwd];
-        self::$postvalue = $postvalue;
+    public function securePost(...$posts){
+        
+        $tab = [];
+        foreach($posts[0] as $key => $value){
+            $value = substr(json_encode(htmlspecialchars(strip_tags(trim($_POST[$key])))), 1, -1);
+            array_push($tab, $value);
+        }
+        self::$postvalue = $tab;
     }
 
-    public function secureGet($getEmail, $getPwd){
+    public function secureGet(...$gets){
         
-        $email = substr(json_encode(htmlspecialchars(strip_tags(trim($_GET["email"])))), 1, -1);
-        $pwd = substr(json_encode(htmlspecialchars(strip_tags(trim($_GET["password"])))), 1, -1);
-        $getvalue = [$email,$pwd];
-        self::$getvalue = $getvalue;
+        $tab = [];
+        foreach($gets[0] as $key => $value){
+            $value = substr(json_encode(htmlspecialchars(strip_tags(trim($_GET[$key])))), 1, -1);
+            array_push($tab, $value);
+        }
+        self::$getvalue = $tab;
     }
 }

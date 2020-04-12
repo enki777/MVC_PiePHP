@@ -63,7 +63,12 @@ class ORM{
 
     public function read($table,$id){
         $connect = Database::getPDO();
-        $sql = "SELECT * from $table where id = $id";
+        $sql = "DESC $table";
+        $stmt = $connect->prepare($sql);
+        $stmt->execute();
+        $results = $stmt->fetch();
+
+        $sql = 'SELECT * from '.$table.' where '.$results["Field"].' = '.$id.'';
         // var_dump($this->executeThis($sql, [$table,$id]));
         $stmt = $connect->prepare($sql);
         $stmt->execute();

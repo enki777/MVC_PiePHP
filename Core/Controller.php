@@ -6,15 +6,11 @@ class Controller{
 
     public function __construct(){
         $secure = new Request();
-        if(isset($_POST["email"]) &&  isset($_POST["password"])){
-            
-            // $secure = new Request();
-            $secure->securePost($_POST["email"], $_POST["password"]);
+        if(isset($_POST)){
+            $secure->securePost($_POST);
             $this->pValue = Request::$postvalue;
-
-        }elseif(isset($_GET["email"]) &&  isset($_GET["password"])){
-
-            $secure->secureGet($_GET["email"], $_GET["password"]);
+        }elseif(isset($_GET)){
+            $secure->secureGet($_GET);
             $this->gValue = Request::$getvalue;
         }
     }
