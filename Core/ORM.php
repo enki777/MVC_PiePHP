@@ -85,7 +85,7 @@ class ORM{
         $sql = 'UPDATE '.$table.' SET '.implode(", ",$tab).' where '.$results["Field"].' = '.$id.'  ';
         // echo $sql;
         $stmt = $connect->prepare($sql);
-        $stmt->execute();
+        return $stmt->execute();
     }
 
     public function delete($table,$id){
@@ -96,9 +96,9 @@ class ORM{
         $results = $stmt->fetch();
 
         $sql = 'DELETE from '.$table.' where '.$results["Field"].' = '.$id.'';
-        echo $sql;
+        // echo $sql;
         $stmt = $connect->prepare($sql);
-        $stmt->execute();
+        return $stmt->execute();
     }
 
     public function find($table, $params = array('WHERE' => '1', 'ORDER BY' => 'id ASC', 'LIMIT' => '')){
@@ -107,9 +107,8 @@ class ORM{
         $valuetab = array_values($params);
         // var_dump($keytab);
         // var_dump($valuetab[2]);
-
         $sql = 'SELECT * from '.$table.' '.$keytab[0].' '.$valuetab[0].' '.$keytab[1].' '.$valuetab[1].' '. ($valuetab[2] != "" ? $keytab[2].' '.$valuetab[2] : '').'';
-        var_dump($sql);
+        // var_dump($sql);
         // foreach($params as $key => $value){
         //     array_push($tab, "$key $value");
         // }

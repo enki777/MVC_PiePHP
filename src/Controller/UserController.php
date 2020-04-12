@@ -13,7 +13,7 @@ class UserController extends \Core\Controller{
         echo "Ceci est la methode filter<br>";
     }
 
-    public function addAction(){
+    public function displayregisterAction(){
         echo "userController / addAction";
         echo  $this->render('register');
     }   
@@ -39,6 +39,10 @@ class UserController extends \Core\Controller{
         }else{
             echo "Mauvais identifiant ou mot de passe";
         }    
+    }
+
+    public function displayreadAction(){
+        echo  $this->render('read');
     }
 
     public function readAction(){
