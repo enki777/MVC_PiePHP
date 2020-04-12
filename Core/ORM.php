@@ -101,9 +101,35 @@ class ORM{
         $stmt->execute();
     }
 
-    // public function find ( $table , $params = array (
-    //     'WHERE ' = > '1',
-    //     'ORDER BY ' = > 'id ASC ',
-    //     'LIMIT ' = > ''
-    //     ) ) {}
+    public function find($table, $params = array('WHERE' => '1', 'ORDER BY' => 'id ASC', 'LIMIT' => '')){
+        $connect = Database::getPDO();
+        $keytab = array_keys($params);
+        $valuetab = array_values($params);
+        // var_dump($keytab);
+        // var_dump($valuetab[2]);
+
+        $sql = 'SELECT * from '.$table.' '.$keytab[0].' '.$valuetab[0].' '.$keytab[1].' '.$valuetab[1].' '. ($valuetab[2] != "" ? $keytab[2].' '.$valuetab[2] : '').'';
+        var_dump($sql);
+        // foreach($params as $key => $value){
+        //     array_push($tab, "$key $value");
+        // }
+        // $length = strlen(end($tab));
+        // var_dump($tab);
+        // $sql = 'SELECT * from '.$table.' '. (end($tab) !== '' ? implode(" ",$tab) : array_pop($tab)) .' ';
+        // var_dump($sql);
+        // // echo $sql;
+        // var_dump($tab);
+        $stmt = $connect->prepare($sql);
+        $stmt->execute();
+        $entrys = $stmt->fetchAll();
+        // var_dump($entrys);
+        return $entrys;
+        // foreach($entrys as $value){
+        //     echo "<ul>";
+        //     foreach($value as $test){
+        //         echo "<li>$test</li>";
+        //     }
+        //     echo "</ul>";
+        // }
+    }
 }

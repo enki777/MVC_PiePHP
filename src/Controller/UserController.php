@@ -20,9 +20,6 @@ class UserController extends \Core\Controller{
 
     public function registerAction(){
         $model = new \Model\UserModel();
-        // $test = $model->checkUser($this->pValue[0]);
-        // var_dump($test);
-        // if($test){
         if($model->userExists($this->pValue[0])){
             echo "Cet utilisateur existe deja";
         }else{
@@ -61,6 +58,11 @@ class UserController extends \Core\Controller{
     public function deleteAction(){
         $model = new \Model\UserModel();
         $model->delete("users",2);
+    }
+
+    public function findAction(){
+        $model = new \Model\UserModel();
+        $model->find("users", array('WHERE' => '1', 'ORDER BY' => 'id ASC', 'LIMIT'=> '5'));
     }
 
     public function __destruct()

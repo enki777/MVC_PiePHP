@@ -14,3 +14,5 @@ Core\Router::connect('/update', ['controller' => 'user', 'action' => 'update']);
 
 Core\Router::connect('/delete', ['controller' => 'user', 'action' => 'delete']);
 
+Core\Router::connect('/find', ['controller' => 'user', 'action' => 'find']);
+

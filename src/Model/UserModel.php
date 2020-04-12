@@ -39,4 +39,9 @@ class UserModel{
         $orm = new \Core\ORM();
         return $orm->delete($table,$id);
     }
+
+    public function find($table, $params){
+        $orm = new \Core\ORM();
+        return $orm->find($table, $params);
+    }
 }
